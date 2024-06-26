@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--	Bootstrap CSS-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+		integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+		integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+	<link rel="stylesheet" th:href="@{/css/style1.css}" />
+	<title th:text="${title}"></title>
+</head>
+
+
+<body>
+
+	<!--Navbar-->
+
+	<nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#"><i class="fa-solid fa-user-graduate"></i> Smart Admission Management
+				System</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+
+				</ul>
+
+				<form class="form-inline my-2 my-lg-0">
+
+					<th:block>
+						<div class="container">
+							<a href="#" class="btn btn-warning"><i class="fa-solid fa-user"></i>
+								Admin Portal</a>
+
+							<a href="#" class="btn btn-success"><i class="fa-solid fa-user"></i>
+								[[${user.name}]]</a>
+
+							<a href="" th:href="@{/logout}" class="btn btn-danger ml-3"><i
+									class="fa-solid fa-circle-left"></i>
+								Logout</a>
+
+
+						</div>
+					</th:block>
+				</form>
+			</div>
+
+	</nav>
+
+	<!-- END Navbar 
+
+	 Side bar -->
+
+	<div class="sidebar mt-2">
+
+		<span onclick="toggleSideBar()" class="crossBtn">&times;</span>
+
+		<a id="home-link" th:href="@{/admin/admin_dashboard}" class="item"><i class="fa-solid fa-house-user"></i>
+			Home</a>
+
+		<a id="profile-link" href="" th:href="@{/admin/admin_profile}" class="item"><i class="fa-solid fa-user"></i>
+			Admin
+			Profile</a>
+
+		<!--<a id="profile-link" href="" th:href="@{/admin/register}" class="item"><i class="fa-solid fa-user-plus"></i> Add
+			User</a>-->
+
+		<a id="profile-link" href="" th:href="@{/admin/view_users}" class="item"><i class="fa-solid fa-eye"></i> View
+			User</a>
+
+		<a href="" th:href="@{/admin/signup_student}" class="item"><i class="fa-solid fa-user"></i> SignUp Student</a>
+
+		<a href="" th:href="@{/admin/add_student_details}" class="item"><i class="fa-solid fa-user"></i> Add Student</a>
+
+		<a href="" th:href="@{/admin/view_students_details}" class="item"><i class="fa-solid fa-user"></i> View
+			Students</a>
+
+		<a href="" th:href="@{/admin/generate-template}" class="item"><i class="fa-solid fa-user"></i> Format Genrate
+		</a>
+
+		<a href="" th:href="@{/admin/fileupoad}" class="item"><i class="fa-solid fa-user"></i> Import
+			Students</a>
+
+		<a href="" th:href="@{/admin/exportStudentsDetails}" class="item"><i class="fa-solid fa-user"></i> Export
+			Details</a>
+
+		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+			aria-expanded="false"> <i class="fa-solid fa-lock"></i> Manage Passwords </a>
+		<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<li><a class="dropdown-item" href="#" th:href="@{/admin/change_admin_password}"><i
+						class="fa-solid fa-lock"></i> Admin Password</a></li>
+			<li><a class="dropdown-item" href="#" th:href="@{/admin/change_student_password}"><i
+						class="fa-solid fa-lock"></i> Student Password</a></li>
+		</ul>
+
+
+		<a href="" th:href="@{/logout}" class="item"><i class="fa-solid fa-circle-left"></i> Logout</a>
+
+		<div class="divider"></div>
+	</div>
+	<!--
+	 END Side bar 
+
+	 Content area -->
+
+	<div class="content mt-5">
+
+		<i onclick="toggleSideBar()"></i>
+
+		<div th:replace="${content}"></div>
+	</div>
+	<!-- END Content area -->
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+	<script th:src="@{static/JS/script.js}"></script>
+</body>
+
+</html>

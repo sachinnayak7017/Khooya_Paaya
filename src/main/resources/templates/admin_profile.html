@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="user_base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<section class="text-center">
+    <h1>Admin profile page</h1>
+    <h4>Name: [[${user.name}]]</h4>
+    <h4>Email: [[${user.email}]]</h4>
+    <h4>About: [[${user.about}]]</h4>
+    <h4>Role: [[${user.role}]]</h4>
+   
+</section>
+</body>
+</html>

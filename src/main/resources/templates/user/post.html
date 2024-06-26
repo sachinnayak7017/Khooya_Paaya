@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Post Upload Form</title>
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  
+</head>
+
+<body class="bg-gray-100">
+	<nav class="bg-red-400 text-white py-4 fixed w-full top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center px-4 md:px-8">
+        <!-- Brand -->
+        <a href="#" class="text-xl font-bold "><img src="/img/lg3.jpeg" alt="Logo" class="rounded-full h-12"></a>
+        <!-- Hamburger Menu (for mobile) -->
+        <div class="md:hidden">
+            <button id="menu-button" class="text-white focus:outline-none">
+                <span class="material-symbols-outlined"><img src="/img/icon.png" class="bg-white h-8"> </span>
+            </button>
+        </div>
+        <!-- Navigation Links -->
+        <ul class="hidden md:flex space-x-4">
+			 <li>
+                <button class="bg-red-200 hover:bg-brightRed hover:text-red-400 border-4 font-semibold text-white md:py-2 md:px-8 py-1 px-2 rounded-md"><a href="/">Home</a></button>
+            </li>
+            <li>
+                          <button class="bg-red-200 hover:bg-white hover:text-red-400 border-4 font-semibold text-white md:py-2 md:px-8 py-1 px-2 rounded-md"><a th:href="@{'/user/profile/'+${user.id}}">[[${user.name}]]</a></button>
+            </li>
+            <li>
+                <button class="bg-red-200 hover:bg-white hover:text-red-400 border-4 font-semibold text-white md:px-8 md:py-2 py-1 px-2 rounded-md"><a href="/register">Logout</a></button>
+            </li>
+            <li>
+				 <button class="bg-red-200 hover:bg-white hover:text-red-400 border-4 font-semibold text-white md:px-8 md:py-2 py-1 px-2 rounded-full">
+                <a th:href="@{'post/' + ${user.id}}">Post</a>
+            </button>
+			</li>
+        </ul>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden">
+        <ul class="flex flex-col text-center space-y-8 mt-4">
+            <li>
+                <button class="bg-red-200 hover:bg-white hover:text-red-500 border-4 font-semibold text-white md:py-2 md:px-8 py-1 px-2 rounded-md"><a href="/">Home</a></button>
+            </li>
+            <li>
+                  <button class="bg-red-200 hover:bg-white hover:text-red-400 border-4 font-semibold text-white md:py-2 md:px-8 py-1 px-2 rounded-md"><a th:href="@{'/user/profile/'+${user.id}}">[[${user.name}]]</a></button>
+            </li>
+            <li>
+                <button class="bg-red-200 hover:bg-white hover:text-red-500 border-4 font-semibold text-white md:px-8 md:py-2 py-1 px-2 rounded-md"><a href="/register">Logout</a></button>
+            </li>
+             <li>
+				 <button class="bg-red-200 hover:bg-white hover:text-red-500 border-4 font-semibold text-white md:px-8 md:py-2 py-1 px-2 rounded-full">
+                <a th:href="@{'post/' + ${user.id}}">Post</a>
+            </button>
+			</li>
+        </ul>
+    </div>
+</nav>
+
+
+	
+	
+	<!--<form th:action="@{/user/savePost}" class="space-y-4" method="post" enctype="multipart/form-data" th:object="${user}">
+		<div class="container mx-auto mt-20">
+			<div class="max-w-md mx-auto bg-white rounded-md p-10 shadow-md">
+				<h1 class="text-2xl font-bold mb-4 text-red-400 text-center">Upload Post</h1>
+  
+              <input type="hidden" class="form-control"  th:value="${user.name}" name="name">
+				
+              <input type="hidden" class="form-control"  th:value="${currentDateTime}" name="time">
+		        
+		      <input type="hidden" class="form-control"  th:value="${user.contactno}" name="contactno">		
+		     <input type="hidden" class="form-control"  th:value="${user.imageData}" name="userData">		
+		 
+		 
+				<div class="mb-4">
+					<label for="title" class="block text-gray-700">Contact No</label>
+					<input type="number" id="contactno" name="contactno"
+						class="w-full border shadow-inner rounded-md px-4 py-2 focus:outline-none focus:border-blue-400"
+						placeholder="Enter contact number">
+				</div>
+
+				<div class="mb-4">
+					<label for="description" class="block text-gray-700">Description</label>
+					<textarea id="description" name="description" rows="4"
+						class="w-full border shadow-inner rounded-md px-4 py-2 focus:outline-none focus:border-blue-400"
+						placeholder="Enter description"></textarea>
+				</div>
+				<div class="mb-4">
+					<label for="image_data" class="block text-gray-700">Image</label>
+					<input type="file" id="file" name="file"
+						class="w-full border shadow-inner rounded-md px-4 py-2 focus:outline-none focus:border-blue-400">
+				</div>
+				<button type="submit"
+					class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Upload</button>
+	</form>-->
+	<form th:action="@{/user/savePost}" class="space-y-4" method="post" enctype="multipart/form-data" th:object="${user}">
+    <div class="container mx-auto mt-20">
+        <div class="max-w-md mx-auto bg-white rounded-md p-10 shadow-md">
+            <h1 class="text-2xl font-bold mb-4 text-red-400 text-center">Upload Post</h1>
+            
+            <input type="hidden" class="form-control" th:value="${user.name}" name="name">
+            <input type="hidden" class="form-control" th:value="${currentDateTime}" name="time">
+            <input type="hidden" class="form-control" th:value="${user.contactno}" name="contactno">        
+            <input type="hidden" class="form-control" th:value="${user.imageData}" name="userData">
+            <input type="hidden" class="form-control" th:value="${user.id}" name="user_id">
+          
+            
+            <div class="mb-4">
+                <label for="description" class="block text-gray-700">Description</label>
+                <textarea id="description" name="description" rows="4"
+                          class="w-full border shadow-inner rounded-md px-4 py-2 focus:outline-none focus:border-blue-400"
+                          placeholder="Enter description"></textarea>
+            </div>
+            
+            <div class="mb-4">
+                <label for="file" class="block text-gray-700">Image</label>
+                <input type="file" id="file" name="file"
+                       class="w-full border shadow-inner rounded-md px-4 py-2 focus:outline-none focus:border-blue-400">
+            </div>
+            
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Upload</button>
+        </div>
+    </div>
+</form>
+
+	</div>
+	</div>
+
+<script>
+    // Toggle mobile menu
+    document.getElementById('menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+</body>
+
+</html>

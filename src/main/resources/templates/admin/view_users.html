@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin_base::layout(~{::section})">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title></title>
+</head>
+
+<body>
+	<section>
+
+		<div class="container">
+			<h2 class="text-center py-3"> View all Users Details</h2>
+
+			<th:block thLif="${session.msg}">
+				<p class="text-center text-success fs-4">[[${session.msg}]]</p>
+
+				<th:block th:text="${@userServiceImp.removeSessionMessage()}"></th:block>
+			</th:block>
+
+			<div>
+				<form th:action="@{/admin/filterper}" method="get">
+					<input id="textSearch" type="text" placeholder="Search for Student" name="keyword"
+						style="height: 5vh; width: 43vw; margin-bottom:5px; font-size: 20px; border: 2px solid dodgerblue; border-radius: 4px;">
+					<button class="btn btn-primary" type="submit"
+						style="width: 7vw; margin-bottom: 4px; ">Search</button>
+				</form>
+
+
+			</div>
+
+			<table class="table">
+				<thead class="bg-primary text-white">
+					<tr>
+						<th scope="col">User Id</th>
+							<th scope="col">User Image</th>
+						<th scope="col">User Name</th>
+						<th scope="col">Email</th>
+						<th scope="col">Role</th>
+						<th scope="col">About</th>
+						
+						
+						<th scope="col">Delete</th>
+						<th scope="col">View</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="us: ${admin}">
+						<th th:text="${us.id}"></th>
+							   
+                <td>
+                    <img th:src="@{'/admin/view_users/' + ${us.id}}" alt="User Image" width="80" height="100">
+                </td>
+				
+						<td th:text="${us.name}"></td>
+						<td th:text="${us.email}"></td>
+						<td th:text="${us.role}"></td>
+						<td th:text="${us.about}"></td>
+						
+						
+						<td>
+							<a class="btn btn-sm btn-danger" th:href="@{'/admin/delete_user/'+${us.id}}">Delete</a>
+						</td>
+
+						<td>
+							<a class="btn btn-sm btn-warning"
+								th:href="@{'/admin/show_user/'+${us.id}}">View</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+	</section>
+
+	<script th:src="@{/JS/script.js}"></script>
+</body>
+
+</html>

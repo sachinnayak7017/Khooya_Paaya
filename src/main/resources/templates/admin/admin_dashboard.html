@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin_base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<section>
+
+		<br>
+		<div class="text-center" style="margin-right: 302px; ">
+			<h1>Admin Dashboard</h1>
+		</div>
+		<br>
+		<th:block thLif="${session.msg}">
+			<p class="text-center text-success fs-4">[[${session.msg}]]</p>
+
+			<th:block th:text="${@userServiceImp.removeSessionMessage()}"></th:block>
+		</th:block>
+
+		<div class="row row-cols-1 row-cols-md-3">
+			<div class="col mb-4">
+				<div class="card" style="box-shadow:10px 5px 5px dodgerblue;">
+					<div class="card-body ">
+						<h5 class="card-title text-center">
+							<li class="fas fa-user fa-2x"></li> Registered Admin
+						</h5>
+						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+							additional content. This content is a little bit longer.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col mb-4">
+				<div class="card" style="box-shadow:10px 5px 5px dodgerblue;">
+					<div class="card-body">
+						<h5 class="card-title text-center">
+							<li class="fas fa-users fa-2x"></li> Registered Users
+						</h5>
+						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+							additional content. This content is a little bit longer.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col mb-4">
+				<div class="card" style="box-shadow:10px 5px 5px dodgerblue;">
+					<div class="card-body">
+						<h5 class="card-title text-center">
+							<li class="fas fa-user-tie fa-2x"></li> Total Registrations
+						</h5>
+						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+							additional content.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col mb-4">
+				<div class="card" style="box-shadow:10px 5px 5px dodgerblue;">
+					<div class="card-body">
+						<h5 class="card-title text-center">
+							<li class="fas fa-user-tie fa-2x"></li> Registered Students
+						</h5>
+						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+							additional content. This content is a little bit longer.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col mb-4">
+				<div class="card" style="box-shadow:10px 5px 5px dodgerblue;">
+					<div class="card-body">
+						<h5 class="card-title text-center">
+							<li class="fas fa-user-slash fa-2x"></li> Deleted Students
+						</h5>
+						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+							additional content.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col mb-4">
+				<div class="card" style="box-shadow:10px 5px 5px dodgerblue;">
+					<div class="card-body">
+						<h5 class="card-title text-center">
+							<li class="fas fa-pen-to-square fa-2x"></li> Updated Students
+						</h5>
+						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+							additional content. This content is a little bit longer.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+
+</html>
